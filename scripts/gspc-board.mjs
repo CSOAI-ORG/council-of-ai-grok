@@ -27,9 +27,13 @@ async function main() {
   console.log(
     `totals      axes=${totals.axes ?? axes.length}  measured=${totals.measured_axes ?? "?"}  unmeasured=${totals.unmeasured_axes ?? "?"}`
   );
-  if (board.living_stamp) {
+  const stamp =
+    board.living_stamp ||
+    (board.measured_on && board.measured_on.living_stamp) ||
+    null;
+  if (stamp) {
     console.log(
-      `stamp       updated=${board.living_stamp.updated || "?"}  signed=${board.living_stamp.signed ?? "?"}  state=${board.living_stamp.verification_state || "?"}`
+      `stamp       updated=${stamp.updated || "?"}  signed=${stamp.signed ?? "?"}  state=${stamp.verification_state || "?"}`
     );
   }
   console.log("");
