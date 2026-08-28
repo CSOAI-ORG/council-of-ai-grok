@@ -1,0 +1,18 @@
+{
+  "name": "council-of-ai",
+  "owner": {
+    "name": "CSOAI Ltd",
+    "email": "nicholas@csoai.org"
+  },
+  "plugins": [
+    {
+      "name": "council-of-ai",
+      "source": "./",
+      "description": "Independent AI-behaviour measurement. Live GSPC board, Ed25519 card verify, artifact seals. Empty cells stay empty. Measurement, never certification.",
+      "version": "0.1.0",
+      "author": { "name": "CSOAI Ltd" },
+      "category": "monitoring",
+      "homepage": "https://councilof.ai"
+    }
+  ]
+}
