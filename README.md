@@ -43,7 +43,21 @@ claude plugin marketplace add "$HOME/.grok/plugins/council-of-ai"
 
 **Codex** — skip until `which codex` finds a binary.
 
+**GitHub Action** (verify in CI — a bank’s pipeline is an agent host):
+
+```yaml
+- uses: CSOAI-ORG/council-of-ai-grok/.github/actions/verify-card@<40-char-sha>
+  with:
+    card: https://councilof.ai/signed/cards/<id>.json
+```
+
+Pin a full SHA, never `main`. Three states: VALID / INVALID / UNCHECKABLE.
+
+Offline CLI: `node verifier/gspc-verify.mjs --json card.json`  
+Human UI: https://councilof.ai/verify
+
 See `docs/MARKETPLACE-PR.md` for the xAI catalog JSON.
+`docs/PREIMAGE-FIX.md` is the next living-stamp rule. `docs/GAP-INDEX.md` is the weekly hollow-row tape ([`csoai/gspc-gap-index`](https://huggingface.co/datasets/csoai/gspc-gap-index)).
 
 ## What loads
 

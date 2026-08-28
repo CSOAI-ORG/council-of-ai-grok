@@ -1,0 +1,56 @@
+name: "Verify GSPC measurement card"
+description: "Three-state Ed25519 check under the pinned card-attestation key. VALID / INVALID / UNCHECKABLE. Measurement, never certification."
+author: "CSOAI Ltd"
+branding:
+  icon: shield
+  color: gray-dark
+inputs:
+  card:
+    description: "Path to a card JSON file, or an https URL to one."
+    required: true
+  fail_on:
+    description: "When to fail the job: invalid (default), never."
+    required: false
+    default: "invalid"
+outputs:
+  state:
+    description: "VALID, INVALID, or UNCHECKABLE"
+    value: ${{ steps.verify.outputs.state }}
+runs:
+  using: composite
+  steps:
+    - id: verify
+      shell: bash
+      env:
+        CARD: ${{ inputs.card }}
+        FAIL_ON: ${{ inputs.fail_on }}
+      run: |
+        set -euo pipefail
+        VERIFY="${{ github.action_path }}/../../../verifier/gspc-verify.mjs"
+        if [ ! -f "$VERIFY" ]; then
+          echo "UNCHECKABLE  bundled verifier missing at $VERIFY"
+          echo "state=UNCHECKABLE" >> "$GITHUB_OUTPUT"
+          exit 2
+        fi
+        WORK="${RUNNER_TEMP:-/tmp}/gspc-card.json"
+        case "$CARD" in
+          https://*|http://*)
+            curl -fsS -A "csoai-verify-action/0.1" "$CARD" -o "$WORK"
+            ;;
+          *)
+            cp "$CARD" "$WORK"
+            ;;
+        esac
+        set +e
+        node "$VERIFY" --json "$WORK"
+        rc=$?
+        set -e
+        if [ "$rc" -eq 0 ]; then
+          echo "state=VALID" >> "$GITHUB_OUTPUT"
+        elif [ "$rc" -eq 1 ]; then
+          echo "state=INVALID" >> "$GITHUB_OUTPUT"
+          if [ "$FAIL_ON" != "never" ]; then exit 1; fi
+        else
+          echo "state=UNCHECKABLE" >> "$GITHUB_OUTPUT"
+          if [ "$FAIL_ON" != "never" ]; then exit 2; fi
+        fi
