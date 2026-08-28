@@ -17,28 +17,29 @@ This is **not** a score, a certificate, or a way to paint the 7 empty cells.
 
 ## Call
 
-Default rail on this Air: `http://127.0.0.1:8402`
+Hosted mock rail (own Worker, not `/api/gspc`):
+
+`https://csoai-402-pack.nicholastempleman.workers.dev`  
+Custom name: `https://pack.councilof.ai` (CF attached; local DNS may lag)
 
 ```bash
-python3 /Users/nicholas/clawd/x402-pack-rail/agent_client.py ${GROK_ARG:-first-buyer}
+PACK_URL=https://csoai-402-pack.nicholastempleman.workers.dev \
+  python3 /Users/nicholas/clawd/x402-pack-rail/agent_client.py ${GROK_ARG:-first-buyer}
 ```
 
 Or:
 
 ```bash
+HOST=https://csoai-402-pack.nicholastempleman.workers.dev
 # unpaid → 402
-curl -sS -D - -o /tmp/pack-402.json \
-  -H 'content-type: application/json' \
-  -d '{"scope":"first-buyer"}' \
-  http://127.0.0.1:8402/v1/pack/assemble
-
+curl -sS -H 'content-type: application/json' -d '{"scope":"first-buyer"}' \
+  $HOST/v1/pack/assemble
 # mock pay → 200
-curl -sS \
-  -H 'content-type: application/json' \
-  -H 'PAYMENT-SIGNATURE: mock' \
-  -d '{"scope":"first-buyer"}' \
-  http://127.0.0.1:8402/v1/pack/assemble
+curl -sS -H 'content-type: application/json' -H 'PAYMENT-SIGNATURE: mock' \
+  -d '{"scope":"first-buyer"}' $HOST/v1/pack/assemble
 ```
+
+Air loopback remains `http://127.0.0.1:8402`.
 
 Live later is owner-gated (`X402_MODE=live` + wallet + facilitator JWT). Do not settle USDC from this TUI.
 
