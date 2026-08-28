@@ -1,0 +1,22 @@
+{
+  "name": "council-of-ai",
+  "version": "0.1.0",
+  "description": "Independent AI-behaviour measurement for Grok Build. Pull the live GSPC board, verify Ed25519 cards offline, seal artifacts. Measurement, never certification.",
+  "author": {
+    "name": "CSOAI Ltd",
+    "email": "nicholas@csoai.org",
+    "url": "https://councilof.ai"
+  },
+  "homepage": "https://councilof.ai",
+  "repository": "https://github.com/CSOAI-ORG/councilof-ai",
+  "license": "MIT",
+  "keywords": [
+    "ai-governance",
+    "measurement",
+    "ed25519",
+    "eu-ai-act",
+    "gspc",
+    "attestation",
+    "mcp"
+  ]
+}
