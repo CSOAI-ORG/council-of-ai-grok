@@ -23,8 +23,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED_TOOLS = {"council", "gspc", "verify", "sign"}
 PIN_URL = "https://github.com/CSOAI-ORG/council-of-ai-grok.git"
+PIN_SHA = "621dd9ccc9b2f71729e58b496c66b87603c9587a"
 SHA_RE = re.compile(r'"sha":\s*"([0-9a-f]{40})"')
-STALE_SHA = "3a75f16094c89a66b7ccc08cbf068d59c22ccece"
 FORBIDDEN_PIN_FRAGMENTS = ("3a75f16", "REPLACE_WITH_40_CHAR_SHA")
 UNPUBLISHED_CLAIM = "not yet published to npm"
 INSTALL_DOCS = (
@@ -101,12 +101,14 @@ def published_pin_sha() -> str:
     for frag in FORBIDDEN_PIN_FRAGMENTS:
         if frag in text:
             raise SystemExit(f"{path}: forbidden pin fragment {frag!r}")
+    if PIN_SHA not in text:
+        raise SystemExit(f"{path}: missing published pin SHA {PIN_SHA}")
     found = SHA_RE.findall(text)
     if not found:
         raise SystemExit(f"{path}: no 40-char lowercase sha in source.sha")
     sha = found[0]
-    if sha == STALE_SHA:
-        raise SystemExit(f"{path}: still pinning stale {STALE_SHA}")
+    if sha != PIN_SHA:
+        raise SystemExit(f"{path}: source.sha is {sha}, published pin is {PIN_SHA}")
     return sha
 
 
