@@ -1,0 +1,17 @@
+{
+  "name": "council-of-ai",
+  "owner": {
+    "name": "CSOAI Ltd",
+    "email": "nicholas@csoai.org"
+  },
+  "metadata": {
+    "description": "Independent AI-behaviour measurement. Empty cells stay empty. Measurement, never certification."
+  },
+  "plugins": [
+    {
+      "name": "council-of-ai",
+      "source": "./",
+      "description": "Independent AI-behaviour measurement. Live GSPC board, Ed25519 card verify, artifact seals. Empty cells stay empty. Measurement, never certification."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "council-of-ai",
+  "displayName": "Council of AI",
+  "version": "0.1.0",
+  "description": "Independent AI-behaviour measurement. Measurement, never certification.",
+  "author": { "name": "CSOAI Ltd", "email": "nicholas@csoai.org" },
+  "homepage": "https://councilof.ai",
+  "license": "MIT",
+  "keywords": ["gspc", "csoai", "council-of-ai"]
+}
