@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REQUIRED_TOOLS = {"council", "gspc", "verify", "sign"}
+REQUIRED_TOOLS = {"council", "gspc", "verify", "sign", "pack"}
 PIN_URL = "https://github.com/CSOAI-ORG/council-of-ai-grok.git"
 SHA_RE = re.compile(r'"sha":\s*"([0-9a-f]{40})"')
 STALE_SHA = "3a75f16094c89a66b7ccc08cbf068d59c22ccece"

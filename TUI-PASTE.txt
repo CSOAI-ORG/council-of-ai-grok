@@ -1,0 +1,25 @@
+/gspc
+
+Confirm live GET https://councilof.ai/api/gspc:
+
+22 axis slots
+15 measured
+7 UNMEASURED (empty cells, not zeros)
+
+UNMEASURED names only:
+reserve-attestation
+regulatory-framework
+distribution-integrity
+custody-disclosure
+ai-economy-index
+human-labour-index
+humanoid-labour-index
+
+Verify (free, no account): https://councilof.ai/verify
+
+/pack first-buyer
+# unpaid assemble → HTTP 402 (invoice for assembly, not a grade)
+# mock pay → 200 + UNMEASURED n:null
+
+npx -y csoai-gspc-mcp
+# board_totals / get_axis / verify_card / list_cards

@@ -1,6 +1,6 @@
 {
   "name": "council-of-ai",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Independent AI-behaviour measurement for Grok Build. Pull the live GSPC board, verify Ed25519 cards offline, seal artifacts. Measurement, never certification.",
   "author": {
     "name": "CSOAI Ltd",
