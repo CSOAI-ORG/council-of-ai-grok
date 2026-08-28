@@ -21,7 +21,7 @@ git ls-remote https://github.com/CSOAI-ORG/council-of-ai-grok.git HEAD
 
 ## Catalog JSON (paste into `.grok-plugin/marketplace.json` `plugins` array)
 
-Replace `REPLACE_WITH_40_CHAR_SHA` after publish.
+Published pin (do not retarget this SHA to a later docs-only HEAD unless the operator re-pins):
 
 ```json
 {
@@ -32,13 +32,11 @@ Replace `REPLACE_WITH_40_CHAR_SHA` after publish.
   "author": "CSOAI Ltd",
   "homepage": "https://councilof.ai",
   "keywords": [
-    "ai-governance",
-    "measurement",
-    "ed25519",
-    "eu-ai-act",
+    "council of ai",
+    "csoai",
     "gspc",
-    "attestation",
-    "verify"
+    "eu-ai-act",
+    "ed25519"
   ],
   "domains": [
     "councilof.ai",
@@ -49,7 +47,7 @@ Replace `REPLACE_WITH_40_CHAR_SHA` after publish.
   "source": {
     "source": "url",
     "url": "https://github.com/CSOAI-ORG/council-of-ai-grok.git",
-    "sha": "REPLACE_WITH_40_CHAR_SHA"
+    "sha": "621dd9ccc9b2f71729e58b496c66b87603c9587a"
   }
 }
 ```
@@ -79,6 +77,7 @@ Council of AI is an independent measurement body: frozen published tests, Ed2551
 It adds Grok Build skills `/council`, `/gspc`, `/verify`, `/sign`, a read-only measurement-auditor subagent, non-blocking session hooks, and MCP:
 
 - `https://councilof.ai/mcp` — board_totals, get_axis, verify_card, list_cards
+- `npx -y csoai-gspc-mcp` — same four tools over stdio
 - `npx -y csoai-governance-mcp` — sign / verify / govern / catalog
 
 ## Source
@@ -86,7 +85,7 @@ It adds Grok Build skills `/council`, `/gspc`, `/verify`, `/sign`, a read-only m
 Remote, SHA-pinned:
 
 - url: `https://github.com/CSOAI-ORG/council-of-ai-grok.git`
-- sha: `<40 char>`
+- sha: `621dd9ccc9b2f71729e58b496c66b87603c9587a`
 
 ## Honesty / affiliation
 

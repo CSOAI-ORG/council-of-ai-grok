@@ -21,7 +21,10 @@ grok --plugin-dir /path/to/council-of-ai-grok inspect
 # MCP HTTP
 # POST https://councilof.ai/mcp
 
-# MCP npm
+# MCP npm — GSPC board (board_totals, get_axis, verify_card, list_cards)
+npx -y csoai-gspc-mcp
+
+# MCP npm — Layer-0 seal / govern / catalog
 npx -y csoai-governance-mcp
 
 # After official catalog merge

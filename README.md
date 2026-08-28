@@ -8,42 +8,42 @@ Council of AI (CSOAI Ltd, UK Companies House 16939677) runs AI systems against f
 
 This plugin does **not** wrap Grok, rank Grok specially, or claim an xAI partnership. It puts the same instrument under the Grok TUI that already sits under Claude Code and Cursor.
 
-## Install (today, before marketplace listing)
+## Install (same four tools on every TUI)
+
+```
+/council  /gspc  /verify  /sign
+```
+
+**Grok Build** — GitHub pin works today. The xAI official-catalog short name waits on [plugin-marketplace#398](https://github.com/xai-org/plugin-marketplace/pull/398).
 
 ```bash
-# 1. Install Grok Build
-curl -fsSL https://x.ai/cli/install.sh | bash
-grok --version
-
-# 2. Drop this folder where Grok looks
-mkdir -p ~/.grok/plugins
-cp -R council-of-ai-grok ~/.grok/plugins/council-of-ai
-
-# or, in a project
-mkdir -p .grok/plugins
-cp -R council-of-ai-grok .grok/plugins/council-of-ai
-
-# 3. Confirm discovery
-grok inspect
+grok plugin install CSOAI-ORG/council-of-ai-grok --trust
+# or a local checkout
+grok plugin install "$HOME/.grok/plugins/council-of-ai" --trust
 ```
 
-Inside the TUI:
-
-```
-/plugins
-/council
-/gspc
-/verify
-/sign
-```
-
-When listed on the official catalog:
+**Claude Code** — catalog is `.claude-plugin/marketplace.json` on this repo:
 
 ```bash
-grok plugin install council-of-ai --trust
+claude plugin marketplace add CSOAI-ORG/council-of-ai-grok
+claude plugin install council-of-ai@council-of-ai
 ```
 
-See `docs/MARKETPLACE-PR.md` for the catalog entry and PR text.
+If Claude cached an empty clone:
+
+```bash
+claude plugin marketplace add "$HOME/.grok/plugins/council-of-ai"
+```
+
+**Cursor** — catalog is `.cursor-plugin/marketplace.json` (source `./`, owner CSOAI Ltd). Add marketplace `CSOAI-ORG/council-of-ai-grok` in Cursor Settings → Plugins, or from a checkout:
+
+```bash
+# Cursor reads the repo-root .cursor-plugin/ marketplace; do not copy the four tools
+```
+
+**Codex** — skip until `which codex` finds a binary.
+
+See `docs/MARKETPLACE-PR.md` for the xAI catalog JSON.
 
 ## What loads
 
@@ -56,15 +56,15 @@ See `docs/MARKETPLACE-PR.md` for the catalog entry and PR text.
 | `skills/sign-artifact/SKILL.md` | Layer-0 seal (`/sign`) |
 | `commands/*.md` | Slash command shims |
 | `agents/measurement-auditor.md` | Read-only subagent |
-| `.mcp.json` | `https://councilof.ai/mcp` + `npx -y csoai-governance-mcp` |
+| `.mcp.json` | `https://councilof.ai/mcp` + `npx -y csoai-gspc-mcp` + `npx -y csoai-governance-mcp` |
 | `hooks/hooks.json` | Session start / stop hints (non-blocking) |
 | `scripts/gspc-board.mjs` | Honest CLI summary of `GET /api/gspc` |
 
 ## MCP fallbacks
 
 - **GSPC tools over HTTP:** `POST https://councilof.ai/mcp` (`board_totals`, `get_axis`, `verify_card`, `list_cards`)
+- **GSPC stdio (npm):** `npx -y csoai-gspc-mcp` (same four tools)
 - **Governance MCP on npm:** `npx -y csoai-governance-mcp` (`csoai_sign`, `csoai_verify`, `csoai_govern`, `csoai_catalog`)
-- **GSPC stdio server (not on npm as of 2026-08-27):** `node mcp/gspc-server/index.mjs` in `CSOAI-ORG/councilof-ai`
 
 ## Honesty
 

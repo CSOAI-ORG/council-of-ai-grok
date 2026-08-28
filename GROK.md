@@ -33,11 +33,11 @@ MCP without the plugin:
 # HTTP (no process)
 # POST https://councilof.ai/mcp
 
+# npm GSPC server (board_totals, get_axis, verify_card, list_cards)
+npx -y csoai-gspc-mcp
+
 # npm governance server
 npx -y csoai-governance-mcp
-
-# monorepo GSPC stdio (not on npm as of 2026-08-27)
-node mcp/gspc-server/index.mjs
 ```
 
 Grok also reads `AGENTS.md` and `CLAUDE.md` without extra config. Keep those honest.
