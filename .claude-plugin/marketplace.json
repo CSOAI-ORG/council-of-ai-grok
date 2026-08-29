@@ -7,7 +7,11 @@
   "plugins": [
     {
       "name": "council-of-ai",
-      "source": "./",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/CSOAI-ORG/council-of-ai-grok.git",
+        "repo": "CSOAI-ORG/council-of-ai-grok"
+      },
       "description": "Independent AI-behaviour measurement. Live GSPC board, Ed25519 card verify, artifact seals. Empty cells stay empty. Measurement, never certification.",
       "version": "0.1.1",
       "author": { "name": "CSOAI Ltd" },
