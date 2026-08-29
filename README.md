@@ -17,9 +17,12 @@ This plugin does **not** wrap Grok, rank Grok specially, or claim an xAI partner
 **Grok Build** — GitHub pin works today. The xAI official-catalog short name waits on [plugin-marketplace#398](https://github.com/xai-org/plugin-marketplace/pull/398).
 
 ```bash
+# Consent first (no MCP until you pass --trust)
+grok plugin install CSOAI-ORG/council-of-ai-grok
+# After you accept hooks/MCP:
 grok plugin install CSOAI-ORG/council-of-ai-grok --trust
 # or a local checkout
-grok plugin install "$HOME/.grok/plugins/council-of-ai" --trust
+grok plugin install /path/to/council-of-ai-grok
 ```
 
 **Claude Code** — catalog is `.claude-plugin/marketplace.json` on this repo:

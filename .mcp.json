@@ -2,14 +2,7 @@
   "mcpServers": {
     "gspc": {
       "url": "https://councilof.ai/mcp"
-    },
-    "gspc-npm": {
-      "command": "npx",
-      "args": ["-y", "csoai-gspc-mcp"]
-    },
-    "csoai-governance": {
-      "command": "npx",
-      "args": ["-y", "csoai-governance-mcp"]
     }
   }
 }
+
