@@ -73,7 +73,7 @@ See `docs/MARKETPLACE-PR.md` for the xAI catalog JSON.
 | `skills/sign-artifact/SKILL.md` | Layer-0 seal (`/sign`) |
 | `commands/*.md` | Slash command shims |
 | `agents/measurement-auditor.md` | Read-only subagent |
-| `.mcp.json` | `https://councilof.ai/mcp` + `npx -y csoai-gspc-mcp` + `npx -y csoai-governance-mcp` |
+| `.mcp.json` | `https://councilof.ai/mcp` (the GSPC MCP — 12 tools, verified end to end) |
 | `hooks/hooks.json` | Session start / stop hints (non-blocking) |
 | `scripts/gspc-board.mjs` | Honest CLI summary of `GET /api/gspc` |
 
@@ -81,7 +81,7 @@ See `docs/MARKETPLACE-PR.md` for the xAI catalog JSON.
 
 - **GSPC tools over HTTP:** `POST https://councilof.ai/mcp` (`board_totals`, `get_axis`, `verify_card`, `list_cards`)
 - **GSPC stdio (npm):** `npx -y csoai-gspc-mcp` (same four tools)
-- **Governance MCP on npm:** `npx -y csoai-governance-mcp` (`csoai_sign`, `csoai_verify`, `csoai_govern`, `csoai_catalog`)
+- **Governance MCP on npm:** `npx -y csoai-governance-mcp` is published, but its default gateway (`https://os.meok.ai/api`) currently answers every path with an HTML page, so `csoai_sign` / `csoai_verify` / `csoai_govern` / `csoai_catalog` return an explicit error (never a fake seal). Not declared in `.mcp.json` until a JSON gateway is live; set `CSOAI_GATEWAY` yourself if you run one.
 
 ## Honesty
 
