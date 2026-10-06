@@ -30,7 +30,7 @@ Council of AI (CSOAI Ltd, UK Companies House 16939677) is an **independent measu
 
 MCP (if connected):
 
-- `gspc` at `https://councilof.ai/mcp` or `npx -y csoai-gspc-mcp` — `board_totals`, `get_axis`, `verify_card`, `list_cards`
+- `council-of-ai` at `https://councilof.ai/mcp/free` (free, read-only, no key) — `board_totals`, `get_axis`, `verify_card`, `list_cards`. The npm package `csoai-gspc-mcp` is deprecated on npm and carries fewer tools.
 - `csoai-governance` via `npx -y csoai-governance-mcp` — `csoai_sign`, `csoai_verify`, `csoai_govern`, `csoai_catalog`
 
 If MCP is down, use HTTP:
