@@ -79,8 +79,8 @@ See `docs/MARKETPLACE-PR.md` for the xAI catalog JSON.
 
 ## MCP fallbacks
 
-- **GSPC tools over HTTP:** `POST https://councilof.ai/mcp` (`board_totals`, `get_axis`, `verify_card`, `list_cards`)
-- **GSPC stdio (npm):** `npx -y csoai-gspc-mcp` (same four tools)
+- **GSPC tools over HTTP (what `.mcp.json` declares):** `POST https://councilof.ai/mcp/free` — the free read-only tools, no key. `POST https://councilof.ai/mcp` adds the x402-metered evidence tools.
+- **GSPC stdio (npm):** `npx -y csoai-gspc-mcp` — every published release is marked deprecated on npm and carries fewer tools than the HTTP door; use the URL above.
 - **Governance MCP on npm:** `npx -y csoai-governance-mcp` is published, but its default gateway (`https://os.meok.ai/api`) currently answers every path with an HTML page, so `csoai_sign` / `csoai_verify` / `csoai_govern` / `csoai_catalog` return an explicit error (never a fake seal). Not declared in `.mcp.json` until a JSON gateway is live; set `CSOAI_GATEWAY` yourself if you run one.
 
 ## Honesty

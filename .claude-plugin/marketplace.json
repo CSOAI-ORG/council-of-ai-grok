@@ -13,7 +13,7 @@
         "repo": "CSOAI-ORG/council-of-ai-grok"
       },
       "description": "Independent AI-behaviour measurement. Live GSPC board, Ed25519 card verify, artifact seals. Empty cells stay empty. Measurement, never certification.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": { "name": "CSOAI Ltd" },
       "category": "monitoring",
       "homepage": "https://councilof.ai"
